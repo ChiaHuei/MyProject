@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 此 XML 代表了 Android 中的一個形狀可繪製物的定義。-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+    <stroke/> 元素定義了形狀的邊框。
+    android:width 指定了邊框的寬度，以密度無關的像素 (dp) 來表示。
+    android:color 指定了邊框的顏色，在這個情況下設定為黑色 (#000000)。
+    -->
+    <stroke android:width="5dp"
+        android:color="#505050"/>
+
+    <corners android:radius="10dp"/> <!-- 設定所有角的圓角半徑為8dp -->
+
+</shape>

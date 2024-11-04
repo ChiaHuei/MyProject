@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="str_month">月</string>
+    <string name="str_income">收入</string>
+    <string name="str_outcome">支出\n</string>
+    <string name="str_total">總額</string>
+    <string name="str_day">日</string>
+    <string name="str_assets">資產</string>
+    <string name="str_debt">負債</string>
+    <string name="str_totalassets">總資產</string>
+</resources>

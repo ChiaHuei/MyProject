@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="selected_item_color">#6A2EF8</color>  <!-- 選中項目的顏色 -->
+    <color name="unselected_item_color">#918CD3</color>  <!-- 未選中項目的顏色 -->
+    <color name="ripple_color">#FFBB86FC</color>  <!-- 點擊漣漪顏色 -->
+    <color name="food">#86B5FC</color>
+    <color name="clothing">#86FCB1</color>
+    <color name="housing">#F8FC86</color>
+    <color name="transport">#BE7CFF</color>
+    <color name="happy">#F886FC</color>
+    <color name="other">#FC8686</color>
+    <color name="salary">#66CDFB</color>
+    <color name="invest">#83FD57</color>
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="36dp">
+
+        <Button
+            android:id="@+id/pieChart_bt_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="總計金額"
+            android:layout_weight="1"
+            app:cornerRadius="8dp"
+            android:backgroundTint="@color/selected_item_color"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginRight="8dp"
+            />
+        <Button
+            android:id="@+id/pieChart_bt_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="佔比例"
+            android:layout_weight="1"
+            app:cornerRadius="8dp"
+            android:backgroundTint="@color/unselected_item_color"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginLeft="8dp"
+            />
+    </LinearLayout>
+
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart_outcome"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="36dp"/>
+
+
+
+
+        <TextView
+            android:id="@+id/chart_outcome_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#14D1A5"
+            android:textSize="24sp"
+            android:text="2024/10"
+            android:layout_marginTop="36dp"
+            android:layout_gravity="center"/>
+        />
+
+
+
+
+
+</LinearLayout>

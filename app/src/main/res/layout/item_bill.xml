@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:paddingVertical="5dp"
+    >
+
+
+    <TextView
+        android:id="@+id/bills_tv_come"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:text="收入"
+        android:background="@drawable/borderline"
+        android:textSize="24sp"
+        android:padding="6dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_weight="2"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/bills_tv_date_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="2024/10/24"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:layout_weight="2"
+                />
+
+            <TextView
+                android:id="@+id/bills_tv_type"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="其它"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/bills_tv_note"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="搭公車"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bills_tv_money"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="3000000"
+        android:gravity="center|end"
+        android:paddingEnd="16dp"
+        android:textSize="22sp"
+        android:layout_weight="3"
+        />
+
+
+</LinearLayout>

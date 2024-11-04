@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">MyProject</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="str_month">月</string>
+    <string name="str_income">收入</string>
+    <string name="str_outcome">支出\n</string>
+    <string name="str_total">總額</string>
+    <string name="str_day">日</string>
+    <string name="str_assets">資產</string>
+    <string name="str_debt">負債</string>
+    <string name="str_totalassets">總資產</string>
+
+    <string-array name="add_type_outcome">
+        <item>食</item>
+        <item>衣</item>
+        <item>住</item>
+        <item>行</item>
+        <item>樂</item>
+        <item>其它</item>
+    </string-array>
+
+    <string-array name="add_type_income">
+        <item>薪水</item>
+        <item>投資</item>
+        <item>其它</item>
+    </string-array>
+
+    <string name="login">登入</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="register">註冊</string>
+    <string name="click_to_login">前往登入</string>
+    <string name="click_to_register">前往註冊</string>
+    <string name="logout">登出</string>
+
+</resources>
