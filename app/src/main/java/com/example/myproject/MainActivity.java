@@ -48,7 +48,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        replaceFragment(new BillsFragment());
+        // 檢查是否有指定目標 Fragment
+        String targetFragment = getIntent().getStringExtra("targetFragment");
+        if ("SettingsFragment".equals(targetFragment)) {
+            // 設定 BottomNavigationView 選擇 Settings 的項目
+            binding.bottomNav.setSelectedItemId(R.id.settings);
+            replaceFragment(new SettingsFragment()); // 顯示 SettingsFragment
+        } else {
+            // 預設顯示 BillsFragment
+            replaceFragment(new BillsFragment());
+        }
+
         binding.bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.bills){

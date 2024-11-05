@@ -118,7 +118,9 @@ public class SettingsFragment extends Fragment {
             } else if (i == 3) {
                 importDataFromFirebase();
             } else if (i == 4) {
-                Toast.makeText(getContext(), "點擊第" + (i + 1) + "項\n內容：" + functions[i], Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), RateConverterActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             } else if (i == 5) {
                 // 創建確認登出的對話框
                 new AlertDialog.Builder(getContext())

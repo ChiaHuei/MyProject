@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/rate_bt_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="6dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="back"
+            android:textSize="32sp"
+            android:gravity="center|left"
+            android:layout_marginLeft="12dp"
+            android:textColor="#9F9F9F"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <!-- 選擇來源貨幣 -->
+    <Spinner
+        android:id="@+id/sourceCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
+
+    <!-- 選擇目標貨幣 -->
+    <Spinner
+        android:id="@+id/targetCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="16dp"/>
+
+    <!-- 輸入金額 -->
+    <EditText
+        android:id="@+id/inputAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="輸入金額"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginHorizontal="16dp"/>
+
+    <!-- 轉換按鈕 -->
+    <Button
+        android:id="@+id/convertButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="轉換"
+        android:layout_gravity="center"
+        app:cornerRadius="8dp"
+        android:backgroundTint="#8A83FF"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
+
+    <!-- 顯示結果 -->
+    <TextView
+        android:id="@+id/resultAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="結果"
+        android:layout_marginTop="24dp"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>

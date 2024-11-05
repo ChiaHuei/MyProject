@@ -52,5 +52,7 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.google.android.material:material:1.5.0")
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
+
 
 }
