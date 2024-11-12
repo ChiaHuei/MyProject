@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background_all"
+    >
 
     <ListView
         android:id="@+id/settings_listView"
@@ -12,6 +12,10 @@
         android:layout_height="match_parent"
         android:choiceMode="singleChoice"
         android:layout_marginVertical="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:dividerHeight="10dp"
+        android:divider="#00FFFFFF"
          />
 
 </LinearLayout>

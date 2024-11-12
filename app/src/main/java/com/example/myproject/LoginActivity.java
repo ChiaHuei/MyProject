@@ -34,7 +34,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText login_et_email, login_et_password;
-    Button login_bt_login;
+    Button login_bt_login, login_bt_use_without_firebase;
     FirebaseAuth mAuth;
     ProgressBar login_progressBar;
     TextView login_tv_registerNow;
@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-//            db.deleteAll();
             importDataFromFirebase();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
@@ -109,6 +108,13 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+        login_bt_use_without_firebase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goMainActivityPage();
+            }
+        });
     }
 
     private void tvSet() {
@@ -128,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
         login_bt_login = findViewById(R.id.login_bt_login);
         login_progressBar = findViewById(R.id.login_progressBar);
         login_tv_registerNow = findViewById(R.id.login_tv_registerNow);
+        login_bt_use_without_firebase = findViewById(R.id.login_bt_use_without_firebase);
     }
 
     private void importDataFromFirebase() {
@@ -169,7 +176,6 @@ public class LoginActivity extends AppCompatActivity {
                         // Firebase 沒有資料，清空 SQLite 資料庫
                         db.deleteAll();
                         goMainActivityPage();
-                        Toast.makeText(LoginActivity.this, "Firebase 無資料，已清空本地資料庫！", Toast.LENGTH_SHORT).show();
                     }
                 }
 

@@ -203,9 +203,10 @@ public class ChartFragment_outcome extends Fragment {
                 ContextCompat.getColor(getContext(), R.color.other)
         });
 
+
         // 設置片段的數值顯示樣式
         dataSet.setValueTextColor(Color.BLACK);  // 設置數值字體顏色
-        dataSet.setValueTextSize(18f);           // 設置數值字體大小
+        dataSet.setValueTextSize(24f);           // 設置數值字體大小
 
 
         float finalTotalExpenses = totalExpenses;
@@ -235,8 +236,8 @@ public class ChartFragment_outcome extends Fragment {
         legend.setDrawInside(false); // 確保圖例顯示在圖表外部
 
         pieChart_outcome.getDescription().setEnabled(true);
-        pieChart_outcome.getDescription().setText("支出分析圖"); // 設定自訂描述文字
-        pieChart_outcome.getDescription().setTextSize(16f);     // 設定文字大小
+        pieChart_outcome.getDescription().setText(""); // 設定自訂描述文字
+        pieChart_outcome.getDescription().setTextSize(24f);     // 設定文字大小
         pieChart_outcome.getDescription().setTextColor(Color.BLACK); // 設定文字顏色
 
 

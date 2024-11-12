@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@drawable/background_all"
+    >
 
 
     <LinearLayout
@@ -12,13 +14,12 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="10dp"
-        android:background="#FFFFFF"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FFFFFF"
             android:orientation="horizontal"
             android:layout_weight="1">
             <TextView
@@ -28,7 +29,8 @@
                 android:gravity="center"
                 android:text="當月收入"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -37,7 +39,8 @@
                 android:gravity="center"
                 android:text="當月支出"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -46,13 +49,13 @@
                 android:gravity="center"
                 android:text="當月總計"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#FFFFFF"
             android:orientation="horizontal"
             android:layout_weight="1">
             <TextView
@@ -63,7 +66,8 @@
                 android:gravity="center"
                 android:text="$0"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/bills_tv_month_outcome"
@@ -73,7 +77,8 @@
                 android:gravity="center"
                 android:text="$0"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/bills_tv_month_totalcome"
@@ -83,14 +88,14 @@
                 android:gravity="center"
                 android:text="$0"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:gravity="fill_vertical"
             android:orientation="horizontal">
 
@@ -101,7 +106,8 @@
                 android:gravity="center"
                 android:text="當日收入"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -110,7 +116,8 @@
                 android:gravity="center"
                 android:text="當日支出"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -119,14 +126,14 @@
                 android:gravity="center"
                 android:text="當日總計"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:gravity="fill_vertical"
             android:orientation="horizontal">
 
@@ -138,7 +145,8 @@
                 android:gravity="center"
                 android:text="$0"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/bills_tv_day_outcome"
@@ -148,7 +156,8 @@
                 android:gravity="center"
                 android:text="$0"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/bills_tv_day_totalcome"
@@ -158,7 +167,8 @@
                 android:gravity="center"
                 android:text="$0"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -180,15 +190,33 @@
         app:tint="@android:color/white" />
 
 
-    <TextView
-        android:id="@+id/bills_tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+    <LinearLayout
         android:layout_marginTop="135dp"
-        android:textColor="#14D1A5"
-        android:textSize="24sp"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center">
+
+
+
+        <TextView
+            android:id="@+id/bills_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#4B5DFA"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="2024/11"
+            android:gravity="center"
+            />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_date_range_24"
+            android:layout_marginLeft="24dp"/>
+    </LinearLayout>
+
 
     <ListView
         android:id="@+id/lv"
@@ -198,7 +226,9 @@
         android:layout_marginTop="180dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="80dp"
-        android:background="#FFFFFF" />
+        android:dividerHeight="10dp"
+        android:divider="#00FFFFFF"
+         />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

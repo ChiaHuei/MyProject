@@ -144,7 +144,7 @@ public class AddbillActivity extends AppCompatActivity {
                 String select = String.valueOf(i);                                      // i 代表第幾項，從 0 開始
                 String selectInfo = adapterView.getItemAtPosition(i).toString();        // getItemAtPosition(i) 代表取值
                 costType = selectInfo;
-                Toast.makeText(AddbillActivity.this, "select:" + select + "\nselectInfo:" + selectInfo, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(AddbillActivity.this, "select:" + select + "\nselectInfo:" + selectInfo, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -171,7 +171,7 @@ public class AddbillActivity extends AppCompatActivity {
                 String select = String.valueOf(i);                                      // i 代表第幾項，從 0 開始
                 String selectInfo = adapterView.getItemAtPosition(i).toString();        // getItemAtPosition(i) 代表取值
                 costType = selectInfo;
-                Toast.makeText(AddbillActivity.this, "select:" + select + "\nselectInfo:" + selectInfo, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(AddbillActivity.this, "select:" + select + "\nselectInfo:" + selectInfo, Toast.LENGTH_SHORT).show();
             }
 
             @Override

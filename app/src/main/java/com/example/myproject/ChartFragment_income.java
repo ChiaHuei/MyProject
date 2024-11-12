@@ -197,7 +197,7 @@ public class ChartFragment_income extends Fragment {
 
         // 設置片段的數值顯示樣式
         dataSet.setValueTextColor(Color.BLACK);  // 設置數值字體顏色
-        dataSet.setValueTextSize(18f);           // 設置數值字體大小
+        dataSet.setValueTextSize(24f);           // 設置數值字體大小
 
 
         float finalTotalExpenses = totalExpenses;
@@ -227,8 +227,8 @@ public class ChartFragment_income extends Fragment {
         legend.setDrawInside(false); // 確保圖例顯示在圖表外部
 
         pieChart_income.getDescription().setEnabled(true);
-        pieChart_income.getDescription().setText("收入分析圖"); // 設定自訂描述文字
-        pieChart_income.getDescription().setTextSize(16f);     // 設定文字大小
+        pieChart_income.getDescription().setText(""); // 設定自訂描述文字
+        pieChart_income.getDescription().setTextSize(24f);     // 設定文字大小
         pieChart_income.getDescription().setTextColor(Color.BLACK); // 設定文字顏色
 
 

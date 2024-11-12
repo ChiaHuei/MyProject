@@ -13,4 +13,10 @@
     <color name="other">#FC8686</color>
     <color name="salary">#66CDFB</color>
     <color name="invest">#83FD57</color>
+    <color name="background_first">#4D9CCBFF</color>
+    <color name="background_last">#4D967FFD</color>
+    <color name="background_item_first">#80967FFD</color>
+    <color name="background_item_last">#80967FFD</color>
+    <color name="outcome_red">#FA3434</color>
+    <color name="intcome_green">#167723</color>
 </resources>

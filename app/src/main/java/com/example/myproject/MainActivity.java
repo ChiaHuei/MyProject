@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        if (user == null){
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            Log.d("@@@", "user.getEmail() = " + user.getEmail());
-        }
+//        if (user == null){
+//            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            Log.d("@@@", "user.getEmail() = " + user.getEmail());
+//        }
 
         db = new DB(this); // 初始化 db
 

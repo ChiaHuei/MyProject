@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
@@ -46,7 +47,6 @@ import java.util.Locale;
 public class BillsFragment extends Fragment {
     private FloatingActionButton fab_add;
     DB db;
-    long id;
     ListView lv;
     TextView bills_tv_time, bills_tv_month_income, bills_tv_month_outcome, bills_tv_month_totalcome, bills_tv_day_income, bills_tv_day_outcome, bills_tv_day_totalcome;
 
@@ -57,8 +57,6 @@ public class BillsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_bills, container, false);
 
         db = new DB(getContext());  // 確保使用當前的 Context 來初始化 DB
-//        db.deleteAll();
-//        importDataFromFirebase();
         findViews(view);
         btSet();
         setCurrentTime(); // 設置當前時間
@@ -191,9 +189,9 @@ public class BillsFragment extends Fragment {
 
         // 將當前的日期設置到 bills_tv_time
         bills_tv_time.setText(currentTime);
+        bills_tv_time.setPaintFlags(bills_tv_time.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
 
-    @SuppressLint("SetTextI18n")
     private void showData(String selectedYearMonth) {
         Cursor c = db.read(selectedYearMonth); // 使用選定的年月讀取資料
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(
@@ -202,8 +200,28 @@ public class BillsFragment extends Fragment {
                 c,
                 new String[]{"come", "date", "type", "note", "money"},
                 new int[]{R.id.bills_tv_come, R.id.bills_tv_date_all, R.id.bills_tv_type, R.id.bills_tv_note, R.id.bills_tv_money}
-        );
+        )
+        {
+            @Override
+            public void bindView(View view, Context context, Cursor cursor) {
+                super.bindView(view, context, cursor);
+
+                // 獲取 come 欄位的值
+                @SuppressLint("Range") String comeValue = cursor.getString(cursor.getColumnIndex("come"));
+
+                // 找到 R.id.bills_tv_come 並設定顏色
+                TextView comeTextView = view.findViewById(R.id.bills_tv_come);
+                if ("收入".equals(comeValue)) {
+                    comeTextView.setTextColor(context.getResources().getColor(R.color.intcome_green)); // 設定綠色
+                } else if ("支出".equals(comeValue)) {
+                    comeTextView.setTextColor(context.getResources().getColor(R.color.outcome_red)); // 設定紅色
+                }
+            }
+        };;
+
         lv.setAdapter(adapter); // 更新 ListView
+
+
 
         // 初始化月收入、月支出和月總計
         int monthIncome = 0;
@@ -338,57 +356,6 @@ public class BillsFragment extends Fragment {
         dialog.show();
     }
 
-    private void importDataFromFirebase() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            String userId = user.getUid();
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("notes").child(userId);
-
-            // 讀取 Firebase 中的 notes 資料
-            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        db.deleteAll(); // 清除本地 SQLite 資料庫的舊資料
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String come = snapshot.child("come").getValue(String.class);
-                            String type = snapshot.child("type").getValue(String.class);
-                            Integer money = snapshot.child("money").getValue(Integer.class);
-                            String note = snapshot.child("note").getValue(String.class);
-                            String date = snapshot.child("date").getValue(String.class);
-
-                            // Log 檢查 Firebase 中的資料
-                            Log.d("FirebaseData", "come: " + come + ", type: " + type + ", money: " + money + ", note: " + note + ", date: " + date);
-
-                            // 將從 Firebase 取得的資料插入 SQLite
-                            boolean result = db.create(come, type, money, note, date);
-                            if (!result) {
-                                Log.e("SQLiteInsert", "資料插入失敗！");
-                            } else {
-                                Log.d("SQLiteInsert", "資料插入成功！");
-                            }
-                        }
-
-                        showData(bills_tv_time.getText().toString());
-
-                        Toast.makeText(getActivity(), "同步成功！", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // Firebase 沒有資料，清空 SQLite 資料庫
-                        db.deleteAll();
-                        showData(bills_tv_time.getText().toString());
-                        Toast.makeText(getActivity(), "Firebase 無資料，已清空本地資料庫！", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(getActivity(), "同步失敗：" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            Toast.makeText(getActivity(), "無法取得使用者資訊，請重新登入。", Toast.LENGTH_SHORT).show();
-        }
-    }
 
 
 

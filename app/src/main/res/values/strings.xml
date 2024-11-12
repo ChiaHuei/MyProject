@@ -34,4 +34,7 @@
     <string name="click_to_register">前往註冊</string>
     <string name="logout">登出</string>
 
+    <string name="underlined_text"><u></u></string>
+
+
 </resources>

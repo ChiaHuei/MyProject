@@ -1,8 +1,10 @@
 package com.example.myproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -43,14 +45,13 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            importDataFromFirebase();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if (currentUser != null) {
+//            importDataFromFirebase();
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
 
 
     }
@@ -105,9 +106,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     register_progressBar.setVisibility(View.GONE);
                                     Toast.makeText(RegisterActivity.this, "Authentication created.", Toast.LENGTH_SHORT).show();
-
-                                    importDataFromFirebase();
-
+                                    // 註冊完成，將訪客原本 sqlite 資料備份上 Firebase
+                                    uploadDataToFirebase();
 
                                 } else {
                                     register_progressBar.setVisibility(View.GONE);
@@ -133,51 +133,46 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void importDataFromFirebase() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private void uploadDataToFirebase() {
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
         if (user != null) {
             String userId = user.getUid();
-            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("notes").child(userId);
+            databaseRef = FirebaseDatabase.getInstance().getReference("notes").child(userId);
 
-            // 讀取 Firebase 中的 notes 資料
-            userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
-                        db.deleteAll(); // 清除本地 SQLite 資料庫的舊資料
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String come = snapshot.child("come").getValue(String.class);
-                            String type = snapshot.child("type").getValue(String.class);
-                            Integer money = snapshot.child("money").getValue(Integer.class);
-                            String note = snapshot.child("note").getValue(String.class);
-                            String date = snapshot.child("date").getValue(String.class);
+            databaseRef.removeValue().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Cursor cursor = db.readAll();
+                    if (cursor.getCount() > 0) {
+                        while (cursor.moveToNext()) {
+                            String id = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
+                            String come = cursor.getString(cursor.getColumnIndexOrThrow("come"));
+                            String type = cursor.getString(cursor.getColumnIndexOrThrow("type"));
+                            int money = cursor.getInt(cursor.getColumnIndexOrThrow("money"));
+                            String note = cursor.getString(cursor.getColumnIndexOrThrow("note"));
+                            String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
 
-                            // Log 檢查 Firebase 中的資料
-                            Log.d("FirebaseData", "come: " + come + ", type: " + type + ", money: " + money + ", note: " + note + ", date: " + date);
+                            Map<String, Object> data = new HashMap<>();
+                            data.put("come", come);
+                            data.put("type", type);
+                            data.put("money", money);
+                            data.put("note", note);
+                            data.put("date", date);
 
-                            // 將從 Firebase 取得的資料插入 SQLite
-                            boolean result = db.create(come, type, money, note, date);
-                            if (!result) {
-                                Log.e("SQLiteInsert", "資料插入失敗！");
-                            } else {
-                                Log.d("SQLiteInsert", "資料插入成功！");
-                            }
+                            // Upload data to Firebase
+                            databaseRef.child(id).setValue(data);
                         }
-                        Toast.makeText(RegisterActivity.this, "同步成功！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "資料已備份到雲端", Toast.LENGTH_SHORT).show();
                     } else {
-                        // Firebase 沒有資料，清空 SQLite 資料庫
-                        db.deleteAll();
-                        Toast.makeText(RegisterActivity.this, "Firebase 無資料，已清空本地資料庫！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "SQLite 為空，雲端資料已清空", Toast.LENGTH_SHORT).show();
                     }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Toast.makeText(RegisterActivity.this, "同步失敗：" + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "雲端資料清空失敗", Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            Toast.makeText(RegisterActivity.this, "無法取得使用者資訊，請重新登入。", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "用戶未登入，請重新登入", Toast.LENGTH_SHORT).show();
         }
     }
 

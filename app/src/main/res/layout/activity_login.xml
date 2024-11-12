@@ -7,7 +7,8 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".LoginActivity"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@drawable/background_all">
 
     <TextView
         android:layout_width="match_parent"
@@ -33,13 +34,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password" />
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <ProgressBar
@@ -48,11 +52,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/login_bt_login"
-        android:text="@string/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/login_bt_login"
+            android:text="@string/login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cornerRadius="8dp"
+            android:backgroundTint="#8A83FF"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/login_bt_use_without_firebase"
+            android:text="訪客"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cornerRadius="8dp"
+            android:backgroundTint="#8A83FF"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"/>
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/login_tv_registerNow"
@@ -62,7 +90,9 @@
         android:layout_marginTop="20dp"
         android:text="@string/click_to_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="#8A83FF"
+        />
 
 
 </LinearLayout>

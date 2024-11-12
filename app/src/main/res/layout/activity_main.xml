@@ -21,6 +21,7 @@
         app:itemRippleColor="@color/bottom_nav_ripple_color"
         app:itemTextColor="@color/bottom_nav_text_color"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_menu" />
+        app:menu="@menu/bottom_menu"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

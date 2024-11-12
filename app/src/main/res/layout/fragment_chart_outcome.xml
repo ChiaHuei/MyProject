@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_all"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,26 +16,25 @@
             android:id="@+id/pieChart_bt_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="總計金額"
-            android:layout_weight="1"
-            app:cornerRadius="8dp"
-            android:backgroundTint="@color/selected_item_color"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:layout_marginRight="8dp"
-            />
+            android:layout_weight="1"
+            android:backgroundTint="@color/selected_item_color"
+            android:text="總計金額"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
+
         <Button
             android:id="@+id/pieChart_bt_percentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="佔比例"
-            android:layout_weight="1"
-            app:cornerRadius="8dp"
-            android:backgroundTint="@color/unselected_item_color"
-            android:textStyle="bold"
-            android:textSize="18sp"
             android:layout_marginLeft="8dp"
-            />
+            android:layout_weight="1"
+            android:backgroundTint="@color/unselected_item_color"
+            android:text="佔比例"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp" />
     </LinearLayout>
 
 
@@ -43,24 +43,33 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="36dp"/>
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="16dp" />
 
 
-
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/chart_outcome_tv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:textColor="#14D1A5"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#4B5DFA"
             android:textSize="24sp"
-            android:text="2024/10"
-            android:layout_marginTop="36dp"
-            android:layout_gravity="center"/>
-        />
+            android:textStyle="bold"
+            android:text="2024/11"
+            android:gravity="center" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/baseline_date_range_24"
+            android:layout_marginLeft="24dp"/>
+    </LinearLayout>
 
 
 

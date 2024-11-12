@@ -42,9 +42,9 @@ import java.util.Map;
 public class SettingsFragment extends Fragment {
 
     private ListView settings_listView;
-    private String[] functions = {"刪除全部資料", "密碼修改", "將資料備份上雲端", "雲端資料匯入", "匯率查詢", "登出"};
-    private int[] img = {R.drawable.baseline_delete_24, R.drawable.baseline_edit_24, R.drawable.baseline_content_copy_24
-            , R.drawable.baseline_important_devices_24, R.drawable.baseline_monetization_on_24, R.drawable.baseline_delete_24};
+    private String[] functions = {"刪除全部資料", "匯率查詢", "將資料備份上雲端", "雲端資料匯入", "密碼修改", "登出"};
+    private int[] img = {R.drawable.baseline_delete_24, R.drawable.baseline_monetization_on_24, R.drawable.baseline_content_copy_24
+            , R.drawable.baseline_important_devices_24, R.drawable.baseline_edit_24, R.drawable.baseline_logout_24};
 
     private FirebaseUser user;
     private FirebaseAuth auth;
@@ -112,15 +112,15 @@ public class SettingsFragment extends Fragment {
                         // 顯示對話框
                         .show();
             } else if (i == 1) {
-                showPasswordChangeDialog();
+                Intent intent = new Intent(getContext(), RateConverterActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             } else if (i == 2) {
                 uploadDataToFirebase();
             } else if (i == 3) {
                 importDataFromFirebase();
             } else if (i == 4) {
-                Intent intent = new Intent(getContext(), RateConverterActivity.class);
-                startActivity(intent);
-                getActivity().finish();
+                showPasswordChangeDialog();
             } else if (i == 5) {
                 // 創建確認登出的對話框
                 new AlertDialog.Builder(getContext())
@@ -195,6 +195,27 @@ public class SettingsFragment extends Fragment {
             });
         } else {
             Toast.makeText(getContext(), "用戶未登入，請重新登入", Toast.LENGTH_SHORT).show();
+            // 創建確認刪除全部的對話框
+            new AlertDialog.Builder(getContext())
+                    .setTitle("是否註冊帳號")
+                    .setMessage("訪客身分無法備份資料上雲端，是否註冊帳號？")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(getContext(), RegisterActivity.class);
+                            startActivity(intent);
+                            getActivity().finish();
+                        }
+                    })
+                    .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss(); // 取消操作，關閉對話框
+                        }
+                    })
+                    // 顯示對話框
+                    .show();
+
         }
     }
 
